@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathCart - E-commerce Store</title>
+  <link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg?v=3" />
+  <link rel="shortcut icon" href="./favicon.svg?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true"><span class="sigma">∑</span></span>
+        <div>
+          <h1>MathCart</h1>
+          <small>Smart shopping made simple</small>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button id="ordersBtn" class="ghost-btn">Orders</button>
+        <button id="cartBtn" class="primary-btn">Basket (<span id="cartCount">0</span>)</button>
+        <button id="logoutBtn" class="danger-btn hidden">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <section id="authSection" class="card auth-card">
+      <div class="tabs">
+        <button id="signupTab" class="tab active">Create Account</button>
+        <button id="loginTab" class="tab">Login</button>
+      </div>
+      <div id="authMessage" class="auth-message"></div>
+
+      <form id="signupForm" class="form active">
+        <h2>Join MathCart</h2>
+        <label>
+          Full Name
+          <input type="text" id="signupName" required />
+        </label>
+        <label>
+          Email
+          <input type="email" id="signupEmail" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="signupPassword" minlength="6" required />
+        </label>
+        <label>
+          Re-type Password
+          <input type="password" id="signupConfirmPassword" minlength="6" required />
+        </label>
+        <button type="submit" class="primary-btn full">Create Account</button>
+      </form>
+
+      <form id="loginForm" class="form">
+        <h2>Welcome Back</h2>
+        <label>
+          Email
+          <input type="email" id="loginEmail" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="loginPassword" required />
+        </label>
+        <button type="submit" class="primary-btn full">Login</button>
+      </form>
+      <button id="demoStartBtn" class="ghost-btn full">Try Demo Checkout + Tracking</button>
+    </section>
+
+    <section id="storeSection" class="hidden">
+      <section class="card section-card">
+        <div class="section-top">
+          <h2>Browse Categories</h2>
+          <p>Explore products by category and search quickly.</p>
+        </div>
+        <div id="categoryChips" class="chips"></div>
+        <div class="search-row">
+          <input id="searchInput" type="search" placeholder="Search for products..." />
+        </div>
+        <div class="demo-actions">
+          <button id="demoCheckoutBtn" class="ghost-btn">Demo Checkout</button>
+          <button id="demoTrackingBtn" class="ghost-btn">Demo Tracking</button>
+        </div>
+      </section>
+
+      <section class="product-grid-wrap">
+        <h3 class="subheading">Products</h3>
+        <div id="productsGrid" class="product-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <aside id="cartDrawer" class="drawer hidden">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <h3>Your Cart</h3>
+        <button id="closeCartBtn" class="icon-btn">x</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="total-row">
+        <strong>Total:</strong>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+      <button id="checkoutBtn" class="primary-btn full">Checkout & Pay</button>
+    </div>
+  </aside>
+
+  <dialog id="productModal" class="modal">
+    <div class="modal-body">
+      <button id="closeProductModalBtn" class="icon-btn modal-close">x</button>
+      <div id="productDetails"></div>
+    </div>
+  </dialog>
+
+  <dialog id="checkoutModal" class="modal">
+    <form id="checkoutForm" class="modal-body checkout-form">
+      <button id="closeCheckoutModalBtn" type="button" class="icon-btn modal-close">x</button>
+      <h3>Checkout</h3>
+      <label>
+        Delivery Address
+        <textarea id="deliveryAddress" rows="3" required></textarea>
+      </label>
+      <label>
+        Payment Method
+        <select id="paymentMethod" required>
+          <option value="Card">Card</option>
+          <option value="UPI">UPI</option>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+      </label>
+      <label id="cardNumberWrap">
+        Card Number
+        <input type="text" id="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" />
+      </label>
+      <label id="upiIdWrap" class="hidden">
+        UPI ID
+        <input type="text" id="upiId" placeholder="name@upi" />
+      </label>
+      <div class="gateway-note">Secure payment via Razorpay / Stripe sandbox</div>
+      <button type="submit" class="primary-btn full">Proceed to Pay</button>
+    </form>
+  </dialog>
+
+  <dialog id="ordersModal" class="modal">
+    <div class="modal-body">
+      <button id="closeOrdersModalBtn" class="icon-btn modal-close">x</button>
+      <h3>Track Your Orders</h3>
+      <div id="ordersList"></div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

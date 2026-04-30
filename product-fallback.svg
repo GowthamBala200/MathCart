@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#edf1ff"/>
+  <rect x="24" y="24" width="552" height="352" rx="18" fill="#dbe5ff" stroke="#aabfff" stroke-width="4"/>
+  <text x="300" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#2d3a68" font-family="Inter, Arial, sans-serif">MathCart Product</text>
+</svg>
